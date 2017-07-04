@@ -8,7 +8,7 @@ class appStruct():
         self.name = appName
         self.status = "unknown"
 
-        # hostpid that sends app info to the server
+        # hostpid that sends app info to the AgoraRemoteAppHandler
         self.infoHostpid = ""
         
         # default doe
@@ -19,7 +19,7 @@ class appStruct():
         self.numOPs = 1
         
         # default rsm
-        self.rsmKind = "sparkGenLinRegr"
+        self.rsmKind = "sparkGenLinRegrPolyComb2"
         
         # the order of the metrics must be the same here and in the opsList
         # es.: (key, value): ( "avg_throughput", ["ln", "ln", "gaussian", "log"] )

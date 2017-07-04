@@ -6,7 +6,7 @@ import os
 import shutil
 import subprocess
 
-class sparkGenLinearRegr2nd():
+class SparkGenLinRegrPolyComb2():
     '''
     classdocs
     '''
@@ -14,12 +14,12 @@ class sparkGenLinearRegr2nd():
         '''
         Constructor
         '''
-        self.tesiCris = "/home/cris/Documents/tesiCris/"
+        self.agora = "/home/cris/Documents/agora/"
         self.sparkFolderDir = "/home/cris/spark-2.1.0-bin-hadoop2.7/"
         
         self.appName = app
         
-        self.sparkFolder = self.tesiCris + self.appName + "/spark/"
+        self.sparkFolder = self.agora + self.appName + "/spark/"
         
         # the order of the metrics must be the same here and in the opsList
         # es.: [ "avg_error", "avg_throughput" ]
@@ -127,7 +127,7 @@ class sparkGenLinearRegr2nd():
         if( os.path.isdir( self.sparkFolder ) == True ):
             shutil.rmtree( self.sparkFolder )
             
-        # es.: /home/cris/Documents/tesiCris/swaptions/spark
+        # es.: /home/cris/Documents/agora/swaptions/spark
         os.makedirs( self.sparkFolder )
     
     def buildModel( self ):
@@ -290,7 +290,7 @@ class sparkGenLinearRegr2nd():
             # es.: "avg_throughput"
             
             sparkFolderMetricDir = self.sparkFolder + metric
-            # es.: "/home/cris/Documents/tesiCris/swaptions/spark/avg_throughput"
+            # es.: "/home/cris/Documents/agora/swaptions/spark/avg_throughput"
             
             os.mkdir( sparkFolderMetricDir )
             
@@ -466,7 +466,7 @@ class sparkGenLinearRegr2nd():
             
             # create the complete ops list (strings with parameters and metrics values)
             model = []
-            modelFile = open( self.tesiCris + self.appName + "/model.txt", "a" )
+            modelFile = open( self.agora + self.appName + "/model.txt", "a" )
             
             for j in range( len( self.testing[0] ) ):
                 op = ""
@@ -493,7 +493,7 @@ class sparkGenLinearRegr2nd():
             return model
 
         else:
-            modelFile = open( self.tesiCris + self.appName + "/model.txt", "a" )
+            modelFile = open( self.agora + self.appName + "/model.txt", "a" )
             
             for op in self.DoEModel:
                 modelFile.write( op + "\n" )

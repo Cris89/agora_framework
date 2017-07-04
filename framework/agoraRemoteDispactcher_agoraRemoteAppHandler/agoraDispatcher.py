@@ -1,8 +1,8 @@
 import paho.mqtt.client as paho
-from server_handler import server_handler
+from agoraRemoteAppHandler import AgoraRemoteAppHandler
 import threading
 
-clientID = "server_listener"
+clientID = "AgoraRemoteDispatcher"
 client = paho.Client(client_id = clientID)
 
 IPaddress = "127.0.0.1"
@@ -10,7 +10,7 @@ brokerPort = "8883"
 
 qos = 0
 
-root = "tesiCris/"
+root = "agora/"
 appsTopic = root + "apps"
 
 apps = []
@@ -19,7 +19,7 @@ threadID = 0
 
 
 ####################################################################################################
-# listener thread
+# thread
 ####################################################################################################
 
 class listenerThread( threading.Thread ):
@@ -36,22 +36,22 @@ class listenerThread( threading.Thread ):
         print( "\nstarting thread" + str(self.threadID) + " for application " + self.appName )
         
         if self.appName in apps:
-            print( "\nserver_handler for application " + self.appName + " already created" )
-            print( "sending hostpid to the server_handler" )
+            print( "\nAgoraRemoteAppHandler for application " + self.appName + " already created" )
+            print( "sending hostpid to the AgoraRemoteAppHandler" )
             
             publish( root + self.appName + "/newHostpid", self.hostpid )
         
         else:
             apps.append( self.appName )
             
-            print( "\ncreating server_handler for application " + self.appName )
+            print( "\ncreating AgoraRemoteAppHandler for application " + self.appName )
             
-            handler = server_handler()
+            remoteAppHandler = AgoraRemoteAppHandler()
 
-            # for managing AgoraRemoteAppHandler disconnection
+            # for managing agoraRemoteAppHandler disconnection
             subscribe( root + self.appName )
             
-            handler.start( self.appName, self.hostpid )
+            remoteAppHandler.start( self.appName, self.hostpid )
         
         print( "\nexiting thread" + str(self.threadID) + " for application " + self.appName )
         

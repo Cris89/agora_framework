@@ -7,9 +7,18 @@ from rsm import rsm
 import threading
 import datetime
 
-
-start_dse_t = None
-end_dse_t = None
+# ####################################################################################################
+# ####################################################################################################
+# ##########  DSE time
+# ####################################################################################################
+# ####################################################################################################
+# start_dse_t = None
+# end_dse_t = None
+# ####################################################################################################
+# ####################################################################################################
+# ########## DSE time
+# ####################################################################################################
+# ####################################################################################################
 
 
 ####################################################################################################
@@ -37,30 +46,30 @@ class doeThread( threading.Thread ):
 
 
 
-            ####################################################################################################
-            ####################################################################################################
-            ########## DoE time
-            ####################################################################################################
-            ####################################################################################################
-            start_doe_t = datetime.datetime.now()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## DoE time
+            # ####################################################################################################
+            # ####################################################################################################
+            # start_doe_t = datetime.datetime.now()
             
             configurations = self.doe.buildDoe()
 
-            end_doe_t = datetime.datetime.now()
-            delta_doe_t = end_doe_t - start_doe_t
+            # end_doe_t = datetime.datetime.now()
+            # delta_doe_t = end_doe_t - start_doe_t
 
-            times_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/times.txt"
-            timesFile = open( times_f, "a" )
+            # times_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/times.txt"
+            # timesFile = open( times_f, "a" )
 
-            timesFile.write( "DoE: " + str( delta_doe_t.total_seconds() ) + " seconds" )
-            timesFile.write( "\n\n\n" )
+            # timesFile.write( "DoE: " + str( delta_doe_t.total_seconds() ) + " seconds" )
+            # timesFile.write( "\n\n\n" )
 
-            timesFile.close()
-            ####################################################################################################
-            ####################################################################################################
-            ########## DoE time
-            ####################################################################################################
-            ####################################################################################################
+            # timesFile.close()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## DoE time
+            # ####################################################################################################
+            # ####################################################################################################
 
 
             
@@ -71,18 +80,18 @@ class doeThread( threading.Thread ):
 
 
 
-            ####################################################################################################
-            ####################################################################################################
-            ########## start DSE time
-            ####################################################################################################
-            ####################################################################################################
-            global start_dse_t
-            start_dse_t = datetime.datetime.now()
-            ####################################################################################################
-            ####################################################################################################
-            ########## start DSE time
-            ####################################################################################################
-            ####################################################################################################
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## start DSE time
+            # ####################################################################################################
+            # ####################################################################################################
+            # global start_dse_t
+            # start_dse_t = datetime.datetime.now()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## start DSE time
+            # ####################################################################################################
+            # ####################################################################################################
 
 
         
@@ -116,56 +125,56 @@ class rsmThread( threading.Thread ):
 
 
 
-            ####################################################################################################
-            ####################################################################################################
-            ########## DSE time
-            ####################################################################################################
-            ####################################################################################################
-            global end_dse_t
-            end_dse_t = datetime.datetime.now()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## DSE time
+            # ####################################################################################################
+            # ####################################################################################################
+            # global end_dse_t
+            # end_dse_t = datetime.datetime.now()
 
-            delta_dse_t = end_dse_t - start_dse_t
+            # delta_dse_t = end_dse_t - start_dse_t
 
-            times_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/times.txt"
-            timesFile = open( times_f, "a" )
+            # times_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/times.txt"
+            # timesFile = open( times_f, "a" )
 
-            timesFile.write( "DSE: " + str( delta_dse_t.total_seconds() ) + " seconds" )
-            timesFile.write( "\n\n\n" )
+            # timesFile.write( "DSE: " + str( delta_dse_t.total_seconds() ) + " seconds" )
+            # timesFile.write( "\n\n\n" )
 
-            timesFile.close()
-            ####################################################################################################
-            ####################################################################################################
-            ########## DSE time
-            ####################################################################################################
-            ####################################################################################################
+            # timesFile.close()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## DSE time
+            # ####################################################################################################
+            # ####################################################################################################
 
 
 
-            ####################################################################################################
-            ####################################################################################################
-            ########## execution info
-            ####################################################################################################
-            ####################################################################################################
-            info_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/info.txt"
-            infoFile = open( info_f, "a" )
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## execution info
+            # ####################################################################################################
+            # ####################################################################################################
+            # info_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/info.txt"
+            # infoFile = open( info_f, "a" )
 
-            infoFile.write( "DoE: " + self.appStruct.getDoeKind() + "\n")
+            # infoFile.write( "DoE: " + self.appStruct.getDoeKind() + "\n")
             
-            if( self.appStruct.getDoeKind() == "lhd" ):
-                infoFile.write( "numSamples: " + str( self.appStruct.getLhdSamples() ) + "\n")
+            # if( self.appStruct.getDoeKind() == "lhd" ):
+            #     infoFile.write( "numSamples: " + str( self.appStruct.getLhdSamples() ) + "\n")
 
-            infoFile.write( "numOPs: " + str( self.appStruct.getNumOPs() ) + "\n")
+            # infoFile.write( "numOPs: " + str( self.appStruct.getNumOPs() ) + "\n")
 
-            infoFile.write( "numHostpids: " + str( len( self.appStruct.getHostpids() ) ) )
+            # infoFile.write( "numHostpids: " + str( len( self.appStruct.getHostpids() ) ) )
 
-            infoFile.write( "\n\n\n" )
+            # infoFile.write( "\n\n\n" )
 
-            infoFile.close()
-            ####################################################################################################
-            ####################################################################################################
-            ########## execution info
-            ####################################################################################################
-            ####################################################################################################
+            # infoFile.close()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## execution info
+            # ####################################################################################################
+            # ####################################################################################################
 
 
             
@@ -173,14 +182,14 @@ class rsmThread( threading.Thread ):
             
 
 
-            ####################################################################################################
-            ####################################################################################################
-            ########## predicted model time
-            ####################################################################################################
-            ####################################################################################################
-            start_model_t = datetime.datetime.now()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## predicted model time
+            # ####################################################################################################
+            # ####################################################################################################
+            # start_model_t = datetime.datetime.now()
 
-            if( self.appStruct.getDoeKind() == "fullFact" or self.appStruct.getRsmKind() == "noRsm" ):
+            if( self.appStruct.getDoeKind() == "fullFact" or self.appStruct.getRsmKind() == "noRSM" ):
                 # first case: I already have the complete model since I have explored all the possible configurations
                 # second case: Rsm is not required --> the partial model is used
                 model = self.appStruct.getDoEsModelString()
@@ -192,22 +201,22 @@ class rsmThread( threading.Thread ):
 
                 model = self.rsm.buildRsm()
 
-            end_model_t = datetime.datetime.now()
+            # end_model_t = datetime.datetime.now()
 
-            delta_model_t = end_model_t - start_model_t
+            # delta_model_t = end_model_t - start_model_t
 
-            times_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/times.txt"
-            timesFile = open( times_f, "a" )
+            # times_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/times.txt"
+            # timesFile = open( times_f, "a" )
 
-            timesFile.write( "model_prediction: " + str( delta_model_t.total_seconds() ) + " seconds" )
-            timesFile.write( "\n\n\n" )
+            # timesFile.write( "model_prediction: " + str( delta_model_t.total_seconds() ) + " seconds" )
+            # timesFile.write( "\n\n\n" )
 
-            timesFile.close()
-            ####################################################################################################
-            ####################################################################################################
-            ########## predicted model time
-            ####################################################################################################
-            ####################################################################################################
+            # timesFile.close()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## predicted model time
+            # ####################################################################################################
+            # ####################################################################################################
 
 
 
@@ -215,36 +224,36 @@ class rsmThread( threading.Thread ):
 
 
 
-            ####################################################################################################
-            ####################################################################################################
-            ########## predicted model
-            ####################################################################################################
-            ####################################################################################################
-            predicted_model_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/predicted_model.txt"
-            modelFile = open( predicted_model_f, "a" )
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## predicted model
+            # ####################################################################################################
+            # ####################################################################################################
+            # predicted_model_f = "/home/cris/Documents/tests/" + self.appStruct.getName() + "/predicted_model.txt"
+            # modelFile = open( predicted_model_f, "a" )
 
-            infoRow = ""
+            # infoRow = ""
 
-            for param in self.appStruct.getParams():
-                infoRow += param + " "
+            # for param in self.appStruct.getParams():
+            #     infoRow += param + " "
 
-            for metric in self.appStruct.getMetrics():
-                infoRow += metric + " "
+            # for metric in self.appStruct.getMetrics():
+            #     infoRow += metric + " "
 
-            modelFile.write(infoRow + "\n")
+            # modelFile.write(infoRow + "\n")
 
             
-            for op in model:
-                op = op.replace( ":", " " )
+            # for op in model:
+            #     op = op.replace( ":", " " )
 
-                modelFile.write(op + "\n")
+            #     modelFile.write(op + "\n")
 
-            modelFile.close()
-            ####################################################################################################
-            ####################################################################################################
-            ########## predicted model
-            ####################################################################################################
-            ####################################################################################################
+            # modelFile.close()
+            # ####################################################################################################
+            # ####################################################################################################
+            # ########## predicted model
+            # ####################################################################################################
+            # ####################################################################################################
 
 
             
@@ -256,10 +265,10 @@ class rsmThread( threading.Thread ):
 
 
 ####################################################################################################
-# server_handler
+# AgoraRemoteAppHandler
 ####################################################################################################
 
-class server_handler():
+class AgoraRemoteAppHandler():
 
     def __init__( self ):
         '''
@@ -268,14 +277,14 @@ class server_handler():
         self.IPaddress = "127.0.0.1"
         self.brokerPort = "8883"
 
-        self.clientID = "server_handler"
+        self.clientID = "AgoraRemoteAppHandler"
         self.qos = 0
         
         self.root = "/home/cris/Documents/"
-        self.tesiCris = "tesiCris/"
+        self.agora = "agora/"
         
         self.newHostpidTopic = None
-        self.clientsReqTopic = None
+        self.agoraLocalAppHandlerReqTopic = None
         self.communicationTopic = None
         self.receiveInfoTopic = None
         self.receiveInfoTopic_NoMultiLevel = None
@@ -314,11 +323,11 @@ class server_handler():
         print( "payload: " + msg.payload )
         
         if( msg.topic == self.newHostpidTopic ):
-            # new client (hostpid) arrived
+            # new AgoraLocalAppHandler (hostpid) arrived
             self.manageNewHostpid( msg.payload )
         
-        elif( msg.topic == self.clientsReqTopic ):
-            # a client (hostpid) made a request
+        elif( msg.topic == self.agoraLocalAppHandlerReqTopic ):
+            # an AgoraLocalAppHandler (hostpid) made a request
             if( self.struct.getStatus() == "unknown" ):
                 # se non conosco nulla dell'applicazione
                 self.requestAppInfo()        
@@ -336,7 +345,7 @@ class server_handler():
                 self.sendModel( msg.payload )
 
         elif( msg.topic == self.disconnectionTopic ):
-            # a client (hostpid) has disconnected
+            # an AgoraLocalAppHandler (hostpid) has disconnected
             self.struct.removeHostpid( msg.payload )
 
             if( self.struct.getStatus() == "receivingInfo" and self.struct.getInfoHostpid() == msg.payload ):
@@ -347,7 +356,7 @@ class server_handler():
         elif( self.receiveInfoTopic_NoMultiLevel in msg.topic ):
             # received app info
 
-            #topic es.: "tesiCris/swaptions/info/crisXPS15_1897"
+            #topic es.: "agora/swaptions/info/crisXPS15_1897"
             splittedTopic = msg.topic.split("/")
             senderHostpid = splittedTopic[-1]
             
@@ -390,19 +399,19 @@ class server_handler():
                     elif( splitted[0] == "minNumObsFeatValues" ):
                         self.struct.setMinNumObsFeatValues( int( splitted[1] ) )
                             
-                    elif( splitted[0] == "numOPs" ):
+                    elif( splitted[0] == "numReps" ):
                         self.struct.setNumOPs( int( splitted[1] ) )
                              
-                    elif( splitted[0] == "doe" ):
+                    elif( splitted[0] == "DoE" ):
                         self.struct.setDoeKind( splitted[1] )
 
                     elif( splitted[0] == "lhdSamples" ):
                         self.struct.setLhdSamples( int(splitted[1]) )
                         
-                    elif( splitted[0] == "rsm" ):
+                    elif( splitted[0] == "RSM" ):
                         self.struct.setRsmKind( splitted[1] )
                     
-                    elif( splitted[0] == "sparkGenLinearRegrTransforms" ):
+                    elif( splitted[0] == "paramsTransforms" ):
                         self.struct.addMetricToSparkGenLinearRegrTransforms( splitted[1] )
                         
                         self.struct.addMetricInfoToSparkGenLinearRegrTransforms( splitted[1], splitted[2] )
@@ -511,7 +520,7 @@ class server_handler():
 
         self.firstSubscriptions()
 
-        if( os.path.exists( self.root + self.tesiCris + self.struct.getName() + "/model.txt" ) == True ):
+        if( os.path.exists( self.root + self.agora + self.struct.getName() + "/model.txt" ) == True ):
             self.loadModel()
             
             self.struct.setStatus( "autotuning" )
@@ -532,18 +541,18 @@ class server_handler():
         self.struct.addHostpid( hostpid )
 
     def buildTopics( self ):
-        self.newHostpidTopic = self.tesiCris + self.struct.getName() + "/newHostpid"
-        self.clientsReqTopic = self.tesiCris + self.struct.getName() + "/req"
-        self.disconnectionTopic = self.tesiCris + self.struct.getName() + "/disconnection"
-        self.receiveInfoTopic_NoMultiLevel = self.tesiCris + self.struct.getName() + "/info"
+        self.newHostpidTopic = self.agora + self.struct.getName() + "/newHostpid"
+        self.agoraLocalAppHandlerReqTopic = self.agora + self.struct.getName() + "/req"
+        self.disconnectionTopic = self.agora + self.struct.getName() + "/disconnection"
+        self.receiveInfoTopic_NoMultiLevel = self.agora + self.struct.getName() + "/info"
         self.receiveInfoTopic = self.receiveInfoTopic_NoMultiLevel + "/#"
-        self.OPsTopic = self.tesiCris + self.struct.getName() + "/OPs"
-        self.communicationTopic = self.tesiCris + self.struct.getName()
+        self.OPsTopic = self.agora + self.struct.getName() + "/OPs"
+        self.communicationTopic = self.agora + self.struct.getName()
 
     def firstSubscriptions( self ):
         self.subscribe( self.newHostpidTopic )
         
-        self.subscribe( self.clientsReqTopic )
+        self.subscribe( self.agoraLocalAppHandlerReqTopic )
         
         self.subscribe( self.disconnectionTopic )
         
@@ -582,30 +591,30 @@ class server_handler():
             # configurationStr finale es.: "4.0 500000.0"
 
             # invio la configurazione
-            # topic es.: tesiCris/swaptions/crisXPS15_1897/configuration
+            # topic es.: agora/swaptions/crisXPS15_1897/configuration
             # payload es.: "1 400000"
-            self.publish( self.tesiCris + self.struct.getName() + "/" + hostpid + "/conf", confStr )
+            self.publish( self.agora + self.struct.getName() + "/" + hostpid + "/conf", confStr )
         
     def checkStartRsm( self ):
         with self.rsmCond:
             if( len( self.struct.getDoneConfs() ) == self.struct.getDoeConfsNumber() ):
                 self.struct.DoEsModelMeans()
 
-                # notify the thread that computes the model through Spark
+                # notify the thread that computes the model
                 self.rsmCond.notifyAll()
     
     def sendModel( self, hostpid ):
         for op in self.struct.getModel():
             op = op.replace( ":", " " )
             
-            self.publish( self.tesiCris + self.struct.getName() + "/" + hostpid + "/model", op )
+            self.publish( self.agora + self.struct.getName() + "/" + hostpid + "/model", op )
         
-        self.publish( self.tesiCris + self.struct.getName() + "/" + hostpid + "/model", "modelDone" )
+        self.publish( self.agora + self.struct.getName() + "/" + hostpid + "/model", "modelDone" )
     
     def loadModel( self ):
         model = []
         
-        with open( self.root + self.tesiCris + self.struct.getName() + "/model.txt", 'r' ) as csvfile:
+        with open( self.root + self.agora + self.struct.getName() + "/model.txt", 'r' ) as csvfile:
             tracereader = csv.reader( csvfile )
             for row in tracereader:
                 for op in row:
@@ -657,8 +666,8 @@ class server_handler():
             for op in self.struct.getDoEsModelString():
                 op = op.replace( ":", " " )
                 
-                self.publish( self.tesiCris + self.struct.getName() + "/" + hostpid + "/model", op )
+                self.publish( self.agora + self.struct.getName() + "/" + hostpid + "/model", op )
             
-            self.publish( self.tesiCris + self.struct.getName() + "/" + hostpid + "/model", "DoEModelDone" )
+            self.publish( self.agora + self.struct.getName() + "/" + hostpid + "/model", "DoEModelDone" )
 
             self.DoEModelSent.append( hostpid )

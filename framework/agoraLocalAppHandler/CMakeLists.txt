@@ -2,7 +2,7 @@
 ##      Compiling the framework module       ##
 ###############################################
 
-set( AGORALOCALAPPHANDLER_LIB_NAME "agoraLocalAppHandler" )
+set( AGORALOCALAPPHANDLER_LIB_NAME "agora_agoraLocalAppHandler" )
 
 
 # -------- Defining the source/header files

@@ -151,7 +151,7 @@ class appStruct():
     def DoEsModelMeans(self):
         print( "\n##################################################" )
 
-        print( "\nDoEsModel:" )
+        print( "\nDoE_Model:" )
 
         for key, values in self.DoEsModel.iteritems():
             if( ":" in key ):
@@ -394,7 +394,7 @@ class appStruct():
         self.infoHostpid = ""
         self.doeKind = "fcccd"
         self.numOPs = 1
-        self.rsmKind = "sparkGenLinRegr"
+        self.rsmKind = "sparkGenLinRegrPolyComb2"
         self.sparkGenLinearRegrTransforms.clear()
         self.params = []
         self.paramsValues = []
@@ -443,12 +443,12 @@ class appStruct():
         print( "\ndoe: " + self.doeKind )
         if( self.doeKind == "lhd" ):
             print( "lhdSamples: " + str(self.lhdSamples) )
-        print( "numOPs: " + str( self.numOPs ) )
+        print( "numReps: " + str( self.numOPs ) )
 
         print( "\nrsm: " + self.rsmKind )
         
         if( len( self.sparkGenLinearRegrTransforms ) != 0 ):
-            print( "\nsparkGenLinearRegrTransforms:" )
+            print( "\nsparkGenLinRegrTransforms:" )
             print( self.sparkGenLinearRegrTransforms )
         
         print( "\nhostpids:" )
@@ -479,7 +479,7 @@ class appStruct():
         #         print op
 
         if( len( self.DoEsModelString ) != 0 ):
-            print( "\nDoEModel:" )
+            print( "\nDoE_Model:" )
             for op in self.DoEsModelString:
                 print op
 

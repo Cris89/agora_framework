@@ -16,6 +16,7 @@ class appStruct():
 
         self.lhdSamples = None
         
+        # numReps
         self.numOPs = 1
         
         # default rsm

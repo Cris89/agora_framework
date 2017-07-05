@@ -24,7 +24,6 @@ class rsm():
         elif( self.appStruct.getRsmKind() == "sparkGenLinRegrPolyComb2" ):
             rsm = SparkGenLinRegrPolyComb2( self.appStruct.getName(),
                                             self.appStruct.getMetrics(),
-                                            self.appStruct.getSparkGenLinearRegrTransforms(),
                                             self.appStruct.getParamsValues(),
                                             self.appStruct.getOPsList(),
                                             self.appStruct.getDoEsModelString() )

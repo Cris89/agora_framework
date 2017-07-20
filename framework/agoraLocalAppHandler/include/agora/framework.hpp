@@ -37,8 +37,11 @@ public:
 	void updateOPs();
 
 private:
-	std::string IPaddress = "127.0.0.1";
-	std::string brokerPort = "8883";
+	//std::string IPaddress = "127.0.0.1";
+	//std::string brokerPort = "8883";
+
+	std::string IPaddress = "131.175.21.167";
+	std::string brokerPort = "1883";
 
 	AppStruct *appStruct;
 	

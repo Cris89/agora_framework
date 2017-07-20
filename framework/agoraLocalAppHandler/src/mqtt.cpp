@@ -66,12 +66,18 @@ void MQTT::connect()
 
 	conn_opts.keepAliveInterval = 10;
 	conn_opts.cleansession = 1;
+
+	conn_opts.username = "agora_local";
+	conn_opts.password = "agora_local"; 
+	
 	conn_opts.will = &will_opts;
 
 	will_opts.topicName = topics->getLastWillTopic();
 	will_opts.message = appStruct->getHostpid();
 	
 	rc = MQTTClient_connect(client, &conn_opts);
+
+	printf( "\n\n\n*****************%d\n\n\n", rc );
 	
 	printf( "\nclientID: %s connected at %s", clientID, connectionAddress );
 }

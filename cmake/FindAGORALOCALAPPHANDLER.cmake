@@ -11,22 +11,31 @@
 set( AGORA_SOURCE_PATH /home/cris/agora )
 set( AGORA_BINARY_PATH /home/cris/agora/build )
 set( AGORA_INSTALL_PATH /usr/local )
+set( MQTT_ROOT $ENV{MQTT_ROOT})
 
 # check for the header of the agoraLocalAppHandler module
-find_path( AGORA_AGORALOCALAPPHANDLER_INCLUDES agora/framework.hpp PATHS
-                    ${AGORA_SOURCE_PATH}/framework/agoraLocalAppHandler/include
-                    /usr/local/include
-                    /usr/include
-                    ${AGORA_INSTALL_PATH}/include
-                    ${CMAKE_EXTRA_INCLUDES}
-          )
+find_path (AGORA_AGORALOCALAPPHANDLER_INCLUDES agora/framework.hpp
+  PATHS ${AGORA_INSTALL_PATH}/include ${AGORA_SOURCE_PATH}/include
+  NO_DEFAULT_PATH
+  )
+
+
+find_path (AGORA_AGORALOCALAPPHANDLER_INCLUDES agora/framework.hpp
+  PATHS /usr/local/include /usr/include ${CMAKE_EXTRA_INCLUDES}
+  )
+
+
 
 # check for MQTT
-find_path( AGORA_MQTT_INCLUDES MQTTClient.h PATHS
-                    /usr/local/include
-                    /usr/include
-                    ${CMAKE_EXTRA_INCLUDES}
-          )
+find_path (AGORA_MQTT_INCLUDES MQTTClient.h
+  PATHS ${MQTT_ROOT}/include
+  NO_DEFAULT_PATH
+  )
+
+
+find_path (AGORA_MQTT_INCLUDES MQTTClient.h
+  PATHS /usr/local/include /usr/include ${CMAKE_EXTRA_INCLUDES}
+  )
 
 # compose the real list of paths
 set( AGORA_INCLUDES ${AGORA_AGORALOCALAPPHANDLER_INCLUDES} ${AGORA_MQTT_INCLUDES} )
@@ -48,15 +57,26 @@ if( NOT AGORALOCALAPPHANDLER_LIBRARIES )
 endif( NOT AGORALOCALAPPHANDLER_LIBRARIES )
 
 # check for the MQTT library
-find_library( MQTT_LIBRARIES lib/libpaho-mqtt3c.so
-	PATHS ${MQTT_ROOT}
-	NO_DEFAULT_PATH
-	)
-if( NOT MQTT_LIBRARIES )
-	find_library( MQTT_LIBRARIES lib/libpaho-mqtt3c.so
-		PATHS /usr/local/lib /usr/lib /lib ${MQTT_ROOT}
-		)
-endif( NOT MQTT_LIBRARIES )
+find_library (MQTT_LIBRARIES_A libpaho-mqtt3a.so libpaho-mqtt3as.so
+  PATHS ${MQTT_ROOT}/lib ${MQTT_ROOT}/lib64
+  NO_DEFAULT_PATH
+  )
+
+find_library (MQTT_LIBRARIES_C libpaho-mqtt3c.so libpaho-mqtt3cs.so
+  PATHS ${MQTT_ROOT}/lib ${MQTT_ROOT}/lib64
+  NO_DEFAULT_PATH
+  )
+
+
+find_library (MQTT_LIBRARIES_A libpaho-mqtt3a.so libpaho-mqtt3as.so
+  PATHS /usr/local/lib /usr/lib /lib ${CMAKE_EXTRA_LIBRARIES}
+  )
+
+find_library (MQTT_LIBRARIES_C libpaho-mqtt3c.so libpaho-mqtt3cs.so
+  PATHS /usr/local/lib /usr/lib /lib ${CMAKE_EXTRA_LIBRARIES}
+  )
+
+set( MQTT_LIBRARIES ${MQTT_LIBRARIES_A} ${MQTT_LIBRARIES_C})
 
 # append the libraries
 set( AGORA_LIBRARIES ${AGORALOCALAPPHANDLER_LIBRARIES} ${MQTT_LIBRARIES} )
